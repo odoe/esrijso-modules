@@ -9,7 +9,7 @@ only [ArcGIS API for JS](https://developers.arcgis.com/javascript/) dependencies
 node index.js src output
 ````
 
-Where `src` is the source of your JavaScript files used in your application and `output` is the output directory to store the module list.
+Where `src` is the source directory of your JavaScript files used in your application and `output` is the output directory to save the module list.
 
 It will create a file called `modules` in the `output` directory that can be used to create a custom build with the [ArcGIS JavaScript Optimizer](https://jso.arcgis.com/).
 
