@@ -7,10 +7,7 @@ var output = userArgs[1] || ""; // optional
 if (!src) {
   throw new Error("No source path provided.");
 };
-var walker = walk.walk(src, {
-    match: /.js$/,
-    exclude: /^\./,
-  });
+var walker = walk.walk(src);
   
 var deps = "";
 
