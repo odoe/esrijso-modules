@@ -12,16 +12,19 @@ var walker = walk.walk(src);
 var deps = "";
 
 walker.on('file', function(root, fileStats, next) {
-  process.stdout.write("reading... " + root + "\\" + fileStats.name + "\n");
-  fs.readFile(path.join(root, fileStats.name), 'utf8', function(err, d) {
-    if (err) next();
-    var _s = d.replace(/(\r\n\s*|\n|\r\s*)/gm,"").replace(/'|"/gm, "").replace(/!/gm, "");
-    var i = _s.indexOf("[")+1;
-    var j = _s.indexOf("]");
-    var s = _s.substring(i,j);
-    deps += s + ",";
-    next();
-  });
+  if (fileStats.name.indexOf(".js") > -1) {
+    process.stdout.write("reading... " + root + "\\" + fileStats.name + "\n");
+    fs.readFile(path.join(root, fileStats.name), 'utf8', function(err, d) {
+      if (err) next();
+      var _s = d.replace(/(\r\n\s*|\n|\r\s*)/gm,"").replace(/'|"/gm, "").replace(/!/gm, "");
+      var i = _s.indexOf("[")+1;
+      var j = _s.indexOf("]");
+      var s = _s.substring(i,j);
+      deps += s + ",";
+      next();
+    });
+  }
+  next();
 });
 
 walker.on('errors', function (root, nodeStatsArray, next) {

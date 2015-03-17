@@ -1,0 +1,27 @@
+{
+  "name": "esrijso-modules",
+  "version": "0.0.1",
+  "description": "Create a module list for use with the ArcGIS JavaScript optimizer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/odoe/esrijso-modules.git"
+  },
+  "keywords": [
+    "esri",
+    "dojo",
+    "esrijs"
+  ],
+  "author": "Rene Rubalcava",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/odoe/esrijso-modules/issues"
+  },
+  "homepage": "https://github.com/odoe/esrijso-modules",
+  "dependencies": {
+    "walk": "~2.3.9"
+  }
+}
