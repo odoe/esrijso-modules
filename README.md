@@ -1,5 +1,7 @@
 ## esrijso-modules
 
+*Inspired by [node-list-dependencies](https://github.com/mrjoelkemp/node-list-dependencies), but will only create a list of Esri/Dojo specific modules.*
+
 Simple node app that will scan directory and create a list of
 only [ArcGIS API for JS](https://developers.arcgis.com/javascript/) dependencies.
 
