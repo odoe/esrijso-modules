@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var walk = require('walk');
+var strip = require('strip-comments');
 var program = require('commander');
 var pkg = require( path.join(__dirname, 'package.json')  );
 
@@ -27,7 +28,7 @@ function parse(directory) {
       process.stdout.write('reading... ' + root + '\\' + fileStats.name + '\n');
       fs.readFile(path.join(root, fileStats.name), 'utf8', function(err, d) {
         if (err) next();
-        var _s = d.replace(/(\r\n\s*|'|"|!|\n|\r\s*)/gm,'');
+        var _s = strip(d).replace(/(\r\n\s*|'|"|!|\n|\r\s*)/gm,'');
         var i = _s.indexOf('[')+1;
         var j = _s.indexOf(']');
         var s = _s.substring(i,j);

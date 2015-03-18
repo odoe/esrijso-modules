@@ -32,6 +32,7 @@
   "homepage": "https://github.com/odoe/esrijso-modules",
   "dependencies": {
     "commander": "^2.7.1",
+    "strip-comments": "^0.3.2",
     "walk": "~2.3.9"
   }
 }
