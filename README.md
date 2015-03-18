@@ -6,10 +6,21 @@ Simple node app that will scan directory and create a list of
 only [ArcGIS API for JS](https://developers.arcgis.com/javascript/) dependencies.
 
 ````
-node index.js src output
+npm install -g esrijso-modules
 ````
 
-Where `src` is the source directory of your JavaScript files used in your application and `output` is the output directory to save the module list.
+### Options
+````
+-h, --help        output usage information
+-V, --version     output the version number
+-s, --src <directory>     Source directory with JavaScript files
+-o, --output <directory>  Output directory for module list. (Optional)
+````
+
+### Usage
+````
+esrijso-modules -s src -o output
+````
 
 It will create a file called `modules` in the `output` directory that can be used to create a custom build with the [ArcGIS JavaScript Optimizer](https://jso.arcgis.com/).
 
