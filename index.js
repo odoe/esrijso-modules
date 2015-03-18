@@ -8,8 +8,8 @@ var pkg = require( path.join(__dirname, 'package.json')  );
 
 program
       .version(pkg.version)
-      .option('-s, --src <a>', 'Source directory with JavaScript files')
-      .option('-o, --output <a>', 'Output directory for module list. (Optional)')
+      .option('-s, --src <directory>', 'Source directory with JavaScript files')
+      .option('-o, --output <directory>', 'Output directory for module list. (Optional)')
       .parse(process.argv);
 
 var src = program.src; // required
