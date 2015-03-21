@@ -28,15 +28,22 @@ function parse(directory) {
       process.stdout.write('reading... ' + root + '\\' + fileStats.name + '\n');
       fs.readFile(path.join(root, fileStats.name), 'utf8', function(err, d) {
         if (err) next();
-        var _s = strip(d).replace(/(\r\n\s*|'|"|!|\n|\r\s*)/gm,'');
-        var i = _s.indexOf('[')+1;
+        var _s = strip(d).replace(/(\r\n\s*|'|"|!|\n|\r\s*)/gm,'').replace(/\s*/gm, '');
+        var index = 8;
+        var i = _s.indexOf('define([');
+        if (i < 0) {
+          index = 9;
+          i = _s.indexOf('require([');
+        }
         var j = _s.indexOf(']');
-        var s = _s.substring(i,j);
+        if (i < 0 || j < 0) next();
+        var s = _s.substring(i+index,j);
         deps += s + ',';
         next();
       });
+    } else {
+      next();
     }
-    next();
   });
 
   walker.on('errors', function (root, nodeStatsArray, next) {
