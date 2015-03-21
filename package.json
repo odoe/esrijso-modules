@@ -1,6 +1,6 @@
 {
   "name": "esrijso-modules",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create a module list for use with the ArcGIS JavaScript optimizer.",
   "main": "index.js",
   "preferGlobal": "true",
