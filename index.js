@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var path = require('path');
-var walk = require('walk');
-var strip = require('strip-comments');
-var program = require('commander');
-var pkg = require( path.join(__dirname, 'package.json')  );
+const fs = require('fs');
+const path = require('path');
+const walk = require('walk');
+const strip = require('strip-comments');
+const program = require('commander');
+const pkg = require( path.join(__dirname, 'package.json')  );
 
 program
       .version(pkg.version)
@@ -13,31 +13,31 @@ program
       .option('-o, --output <directory>', 'Output directory for module list. (Optional)')
       .parse(process.argv);
 
-var src = program.src; // required
-var output = program.output || ''; // optional
+const src = program.src; // required
+const output = program.output || ''; // optional
 if (!src) {
   throw new Error('No source path provided.');
 };
 
 function parse(directory) {
-  var walker = walk.walk(directory);
-  var deps = '';
+  const walker = walk.walk(directory);
+  const deps = '';
 
   walker.on('file', function(root, fileStats, next) {
     if (fileStats.name.indexOf('.js') > -1) {
       process.stdout.write('reading... ' + root + '\\' + fileStats.name + '\n');
       fs.readFile(path.join(root, fileStats.name), 'utf8', function(err, d) {
         if (err) next();
-        var _s = strip(d).replace(/(\r\n\s*|'|"|!|\n|\r\s*)/gm,'').replace(/\s*/gm, '');
-        var index = 8;
-        var i = _s.indexOf('define([');
+        const _s = strip(d).replace(/(\r\n\s*|'|"|!|\n|\r\s*)/gm,'').replace(/\s*/gm, '');
+        const index = 8;
+        const i = _s.indexOf('define([');
         if (i < 0) {
           index = 9;
           i = _s.indexOf('require([');
         }
-        var j = _s.indexOf(']');
+        const j = _s.indexOf(']');
         if (i < 0 || j < 0) next();
-        var s = _s.substring(i+index,j);
+        const s = _s.substring(i+index,j);
         deps += s + ',';
         next();
       });
@@ -51,7 +51,7 @@ function parse(directory) {
   });
 
   walker.on('end', function () {
-    var sortedList = deps.split(',').filter(function(x) {
+    const sortedList = deps.split(',').filter(function(x) {
       return x.length > 1 && (
           x.indexOf('esri/') > -1 ||
           x.indexOf('dojo/') > -1 ||
@@ -63,7 +63,7 @@ function parse(directory) {
         );
     }).sort();
 
-    var list = sortedList.filter(function(x, i) {
+    const list = sortedList.filter(function(x, i) {
       return sortedList.indexOf(x) === i;
     }).join(',').replace(/\s/gm, '');
 

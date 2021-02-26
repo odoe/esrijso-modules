@@ -1,6 +1,6 @@
 {
   "name": "esrijso-modules",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Create a module list for use with the ArcGIS JavaScript optimizer.",
   "main": "index.js",
   "preferGlobal": "true",
@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/odoe/esrijso-modules",
   "dependencies": {
-    "commander": "^2.7.1",
-    "strip-comments": "^0.3.2",
-    "walk": "~2.3.9"
+    "commander": "^7.0.0",
+    "strip-comments": "^2.0.1",
+    "walk": "~2.3.14"
   }
 }
